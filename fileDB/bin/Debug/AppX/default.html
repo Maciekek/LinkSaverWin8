@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>fileDB</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <!-- fileDB references -->
+    <link href="/css/default.css" rel="stylesheet" />
+    <script src="/js/default.js"></script>
+</head>
+<body>
+    <p>Content goes here</p>
+    <div id="mediumListIconTextTemplate" data-win-control="WinJS.Binding.Template">
+        <div style="width: 150px; height: 100px;">
+
+            <div class="smallListIconTextItem-Detail">
+
+                <div id="element">
+
+                    <!-- Displays the "title" field. -->
+                    <h4 data-win-bind="innerText: name"></h4>
+
+                    <!-- Displays the "text" field. -->
+                    <h6 data-win-bind="innerText: link"></h6>
+                </div>
+            </div>
+            <button id="addLinkButton">Add link</button>
+        </div>
+    </div>
+
+    <div id="basicListView" data-win-control="WinJS.UI.ListView" data-win-options="{
+
+                itemsReorderable: true,
+                layout: { type: WinJS.UI.GridLayout } }">
+    </div>
+
+</body>
+</html>

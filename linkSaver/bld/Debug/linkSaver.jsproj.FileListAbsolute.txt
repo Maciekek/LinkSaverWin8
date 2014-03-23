@@ -1,0 +1,15 @@
+D:\LinkSaverWin8\linkSaver\bin\Debug\ReverseMap\resources.pri
+D:\LinkSaverWin8\linkSaver\bin\Debug\AppxManifest.xml
+D:\LinkSaverWin8\linkSaver\bin\Debug\linkSaver.build.appxrecipe
+D:\LinkSaverWin8\linkSaver\bld\Debug\priconfig.xml
+D:\LinkSaverWin8\linkSaver\bld\Debug\priconfig.xml.intermediate
+D:\LinkSaverWin8\linkSaver\bld\Debug\layout.resfiles
+D:\LinkSaverWin8\linkSaver\bld\Debug\layout.resfiles.intermediate
+D:\LinkSaverWin8\linkSaver\bld\Debug\resources.resfiles
+D:\LinkSaverWin8\linkSaver\bld\Debug\resources.resfiles.intermediate
+D:\LinkSaverWin8\linkSaver\bld\Debug\pri.resfiles
+D:\LinkSaverWin8\linkSaver\bld\Debug\pri.resfiles.intermediate
+D:\LinkSaverWin8\linkSaver\bld\Debug\qualifiers.txt
+D:\LinkSaverWin8\linkSaver\bld\Debug\qualifiers.txt.intermediate
+D:\LinkSaverWin8\linkSaver\bld\Debug\MultipleQualifiersPerDimensionFound.txt
+D:\LinkSaverWin8\linkSaver\bld\Debug\ProjectArchitectures.txt

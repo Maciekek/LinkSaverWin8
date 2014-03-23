@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>addLink</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <link href="addLink.css" rel="stylesheet" />
+    <script src="addLink.js"></script>
+</head>
+<body>
+    <div class="addLink fragment">
+        <header aria-label="Header content" role="banner">
+            <button data-win-control="WinJS.UI.BackButton"></button>
+            <h1 class="titlearea win-type-ellipsis">
+                <span class="pagetitle">Addlink</span>
+            </h1>
+        </header>
+        <section aria-label="Add link" role="main">
+            <input id="nameInput" type="text" />
+            <input id="linkInput" type="text" />
+            <button id="saveLinkButton">Save link</button>
+            <button id="reset">Reset</button>
+
+        </section>
+    </div>
+</body>
+</html>

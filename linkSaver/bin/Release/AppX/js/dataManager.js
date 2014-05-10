@@ -4,16 +4,24 @@
     var dataList;
     var applicationData = Windows.Storage.ApplicationData.current;
     var roamingFolder = applicationData.roamingFolder;
-
+    var sizeDB = 0;
+    var db = [];
+    
+    
     var write = function (roamingFolder, nameRetrieved, linkRetrieved) {
         roamingFolder.createFileAsync("dataFile.txt", Windows.Storage.CreationCollisionOption.replaceExisting)
                 .then(function (file) {
-                    textInFile = textInFile.replace(/"/g, "");
+                   
+                    var newLink_ = {
+                        id: ++sizeDB,
+                        link: linkRetrieved,
+                        name: nameRetrieved
+                    };
+                    db.links.push(newLink_);
                     
-                    var fileContent = textInFile;
-                    var stringToSave = textInFile + '### ' + nameRetrieved + ' %%% ' + linkRetrieved + ' &&&';
                  
-                    return Windows.Storage.FileIO.writeTextAsync(file, JSON.stringify(stringToSave));
+                 
+                    return Windows.Storage.FileIO.writeTextAsync(file, JSON.stringify(db));
                 }).done(function () {
                     console.log("zapis udany");
                 });
@@ -25,34 +33,25 @@
         .then(function (sampleFile) {
             return Windows.Storage.FileIO.readTextAsync(sampleFile);
         }).done(function (content) {
-          
-            textInFile = content;
-            content =  content.replace(/"/g, "");
-            content = "[{".concat(content.replace(/&&&###/g, "'}, {name :'"));
-            content = content.replace(/###/g, "name: '");
-            content = content.replace(/%%%/g, "', link: '");
-            content = content.replace(/&&&/g, "'}]");
-            content = content.replace("\"", "");
             var simpleListView = document.getElementById('basicListView').winControl;
             var simpleTemplate = document.getElementById('mediumListIconTextTemplate');
-            try {
-                var linkList = JSON.parse(JSON.stringify(eval('' + content + '')));
-                console.log(content);
-                dataList = new WinJS.Binding.List(linkList);
+            //try {
+            console.dir(content.length);
+            if (content.length === 0) {
+                console.log("Plik najprawdopodobniej jest pusty...");
+                return;
+            };
+          
+            var json_file = JSON.parse(content);
+            sizeDB = json_file.countOfElement;
+            db.links = json_file.links;
+            console.log(db.links);
+            dataList = new WinJS.Binding.List(db.links);
                 
 
-                simpleListView.itemTemplate = simpleTemplate;
-                simpleListView.itemDataSource = dataList.dataSource;
-            }
-            catch (e) {
-                console.log("Nic do czytania");
-                var emptyList = [];
-                dataList = new WinJS.Binding.List(emptyList);
-                simpleListView.itemTemplate = simpleTemplate;
-                simpleListView.itemDataSource = dataList.dataSource;
-            }
-        }, function () {
-            console.log("cos");
+            simpleListView.itemTemplate = simpleTemplate;
+            simpleListView.itemDataSource = dataList.dataSource;
+          
         });
         return dataList;
     };

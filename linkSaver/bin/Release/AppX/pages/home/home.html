@@ -12,6 +12,7 @@
     <link href="/css/default.css" rel="stylesheet" />
     <link href="/pages/home/home.css" rel="stylesheet" />
     <script src="/pages/home/home.js"></script>
+   
 </head>
 <body>
     <!-- The content that will be loaded and displayed. -->
@@ -19,39 +20,33 @@
         <header aria-label="Header content" role="banner">
             <button data-win-control="WinJS.UI.BackButton"></button>
             <h1 class="titlearea win-type-ellipsis">
-                <span class="pagetitle">Welcome to linkSaver!</span>
+                <span class="pagetitle">linkSaver</span>
             </h1>
         </header>
-        <section aria-label="Main content" role="main">
-            <p>Content goes here.</p>
-            <div id="mediumListIconTextTemplate" data-win-control="WinJS.Binding.Template">
+        <section aria-label="Main content" role="main" style="margin-top: 10px;">
+            <div id="mediumListIconTextTemplate" data-win-control="WinJS.Binding.Template" style="width: 1047px;">
                 <div style="width: 150px; height: 100px;">
 
-                    <div class="smallListIconTextItem-Detail">
+                    <div class="smallListIconTextItem">
 
                         <div id="element">
-
-                            <!-- Displays the "title" field. -->
-                            <h4 data-win-bind="innerText: name"></h4>
-
-                            <!-- Displays the "text" field. -->
-                            <h6 data-win-bind="innerText: link"></h6>
+                            <button id="buttonLink" onclick="window.location.href = document.activeElement.getElementsByTagName('h6')[0].innerText"><h4 data-win-bind="innerText: name"></h4>
+                            <h6 class="link" data-win-bind="innerText: link"></h6></button>
+                            
                         </div>
                     </div>
                 </div>
             </div>
 
             <div id="basicListView" data-win-control="WinJS.UI.ListView" data-win-options="{
-                
+                tapBehavior: 'toggleSelect',
                 itemsReorderable: true,
-                layout: { type: WinJS.UI.GridLayout } }">
+                layout: { type: WinJS.UI.GridLayout } }" >
             </div>
-
-            <button id="addLinkButton">Add link</button>
-            <button id="show">Show</button>
+        	
         </section>
     </div>
-    <div id="scenarioAppBar" data-win-control="WinJS.UI.AppBar">
+    <div id="scenarioAppBar" data-win-control="WinJS.UI.AppBar" >
         <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{id:'cmdAdd',label:'Add',icon:'add',section:'global',extraClass:'singleSelect',tooltip:'Add item'}"></button>
         <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{id:'cmdSelectAll',label:'Select All',icon:'selectall',section:'selection',extraClass:'multiSelect',tooltip:'Select All'}"></button>
         <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{id:'cmdClearSelection',label:'Clear Selection',icon:'clearselection',section:'selection',extraClass:'multiSelect',tooltip:'Clear Selection'}"></button>

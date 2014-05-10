@@ -2,7 +2,8 @@
 // http://go.microsoft.com/fwlink/?LinkId=232511
 (function () {
     "use strict";
-
+    var applicationData = Windows.Storage.ApplicationData.current;
+    var roamingFolder = applicationData.roamingFolder;
     WinJS.UI.Pages.define("/pages/addLink/addLink.html", {
         // This function is called whenever a user navigates to this page. It
         // populates the page elements with the app's data.
@@ -10,8 +11,7 @@
             var saveLinkButton = document.getElementById("saveLinkButton");
             saveLinkButton.addEventListener("click", this.saveLinkButtonHandler, false);
 
-            var reset = document.getElementById("reset");
-            reset.addEventListener("click", this.reset, false);
+           
         },
 
         unload: function () {
@@ -24,63 +24,32 @@
             // TODO: Respond to changes in layout.
         },
         saveLinkButtonHandler: function (eventInfo) {
-            var applicationData = Windows.Storage.ApplicationData.current;
-            var roamingSettings = applicationData.roamingSettings;
-            var composite = new Windows.Storage.ApplicationDataCompositeValue();
-            var numberOfLinks = getNumberOfLinks(roamingSettings);
+            if (document.getElementById("linkInput").value.length < 2 ||document.getElementById("linkInput").value.length < 2) {
+                
+            } else {
+                var link = document.getElementById("nameInput").value;
+                var name = document.getElementById("linkInput").value;
+                var pattern = new RegExp("^https?://", "g");
 
-            composite["name"] = document.getElementById("nameInput").value;
-            composite["link"] = document.getElementById("linkInput").value;
-            if (roamingSettings.values["numberOfLinks"] === NaN) {
-                roamingSettings.values["numberOfLinks"] = 0;
+                if (pattern.test(link)) {
+                    console.log("OK");
+                    DataManager.write(roamingFolder, name, link);
+                }
+                else {
+                    "http://".concat(link);
+                    DataManager.write(roamingFolder, name, "http://".concat(link));
+                }
+
+                
+                eventInfo.preventDefault();
+                var link = eventInfo.target;
+                link.href = "/pages/home/home.html";
+                WinJS.Navigation.navigate(link.href);
             }
-
-            console.log("1. liczba zapisanych linkow " + numberOfLinks);
-            roamingSettings.values[numberOfLinks + 1] = composite;
-
-            console.log(roamingSettings.values[numberOfLinks + 1]["name"]);
-            roamingSettings.values["numberOfLinks"]++;
-            eventInfo.preventDefault();
-            var link = eventInfo.target;
-            link.href = "/pages/home/home.html";
-
-
-
-
-
-
-
-
-
-
-
-            WinJS.Navigation.navigate(link.href);
-
-
-
         },
-        reset: function () {
-            var applicationData = Windows.Storage.ApplicationData.current;
-            var roamingSettings = applicationData.roamingSettings;
-            var composite = new Windows.Storage.ApplicationDataCompositeValue();
-            roamingSettings.values["numberOfLinks"] = 0;
-            roamingSettings.values.remove(1);
-
-            console.log(roamingSettings.values["numberOfLinks"]);
-        }
+        
     });
 
-    var getNumberOfLinks = function (roamingSettings) {
-        var numberOfLinks;
-        try {
-            numberOfLinks = roamingSettings.values["numberOfLinks"];
-            console.log("ilość linków z add " + numberOfLinks);
-        }
-        catch (e) {
-
-            console.log("brak wcześniejszych wpisów.");
-        };
-        return numberOfLinks;
-    };
+    
 })();
 

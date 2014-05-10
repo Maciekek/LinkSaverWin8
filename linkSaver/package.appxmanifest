@@ -1,47 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
-
-  <Identity
-    Name="a618e451-0bac-4712-b93e-35be178f2bd7"
-    Version="1.0.0.0"
-    Publisher="CN=Maciej" />
-
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:build="http://schemas.microsoft.com/developer/appx/2012/build" IgnorableNamespaces="build">
+  <Identity Name="23087Maciekek.LinkSaver" Version="1.1.0.2" Publisher="CN=5A694AC8-6257-47F1-8CB9-850ED85CBB31" />
   <Properties>
-    <DisplayName>linkSaver</DisplayName>
-    <PublisherDisplayName>Maciej</PublisherDisplayName>
+    <DisplayName>LinkSaver</DisplayName>
+    <PublisherDisplayName>Maciekek</PublisherDisplayName>
     <Logo>images\storelogo.png</Logo>
   </Properties>
-
   <Prerequisites>
     <OSMinVersion>6.3.0</OSMinVersion>
     <OSMaxVersionTested>6.3.0</OSMaxVersionTested>
   </Prerequisites>
-
   <Resources>
     <Resource Language="x-generate" />
   </Resources>
-
   <Applications>
-    <Application 
-      Id="App"
-      StartPage="default.html">
-
-      <m2:VisualElements
-        DisplayName="linkSaver"
-        Description="linkSaver"
-        ForegroundText="light"
-        BackgroundColor="#464646"
-        Square150x150Logo="images\Logo.png"
-        Square30x30Logo="images\SmallLogo.png">
-
+    <Application Id="App" StartPage="default.html">
+      <m2:VisualElements DisplayName="LinkSaver" Description="linkSaver" ForegroundText="light" BackgroundColor="#464646" Square150x150Logo="images\Logo.png" Square30x30Logo="images\SmallLogo.png">
         <m2:SplashScreen Image="images\splashscreen.png" />
-
       </m2:VisualElements>
     </Application>
   </Applications>
-
-  <Capabilities>
-    <Capability Name="internetClient" />
-  </Capabilities>
-
+  <build:Metadata>
+    <build:Item Name="Blend" Version="12.0.41002.1" />
+  </build:Metadata>
 </Package>

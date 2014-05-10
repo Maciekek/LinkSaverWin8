@@ -4,49 +4,75 @@
     WinJS.UI.Pages.define("/pages/home/home.html", {
         // This function is called whenever a user navigates to this page. It
         // populates the page elements with the app's data.
+        
         ready: function (element, options) {
-            var addLinkButton = document.getElementById("addLinkButton");
+            var applicationData = Windows.Storage.ApplicationData.current;
+            var roamingFolder = applicationData.roamingFolder;
+
+            var addLinkButton = document.getElementById("cmdAdd");
             addLinkButton.addEventListener("click", this.addLinkButtonClickHandler, false);
 
-            var showButton = document.getElementById("show");
-            showButton.addEventListener("click", this.showClickHandler, false);
+            var saveLinkButton = document.getElementById("cmdSelectAll");
+            saveLinkButton.addEventListener("click", this.selectAllHandler, false);
 
-            var dataList =  DataManager.getLinks();
+            var saveLinkButton = document.getElementById("cmdClearSelection");
+            saveLinkButton.addEventListener("click", this.deselectAllHandler, false);
 
-            var simpleListView = document.getElementById('basicListView').winControl;
-            var simpleTemplate = document.getElementById('mediumListIconTextTemplate');
-            simpleListView.itemTemplate = simpleTemplate;
-            simpleListView.itemDataSource = dataList.dataSource;
+            var deleteButton = document.getElementById("cmdDelete");
+            deleteButton.addEventListener("click", this.deleteClickHandler, false);
 
-            var deleteIndex = 0;
-            var list = document.getElementById("basicListView").winControl;
-            list.addEventListener('selectionchanged', function () {
-                deleteIndex = list.selection.getItems;
-                DataManager.deleteElement(deleteIndex);
-                
-                console.log(deleteIndex.length);
-            });
+            appBar = document.getElementById("scenarioAppBar");
+            
+            var listView = document.getElementById("basicListView");
+            listView.addEventListener("selectionchanging", this.showClickHandler, false);
 
+            DataManager.read(roamingFolder);
            
         },
 
         addLinkButtonClickHandler: function (eventInfo) {
-            //linkArray.push({ name: "facebook", path: "www.facebook.pl" });
             eventInfo.preventDefault();
             var link = eventInfo.target;
             link.href = "/pages/addLink/addLink.html";
-
 
             WinJS.Navigation.navigate(link.href);
 
         },
         showClickHandler: function (eventInfo) {
-            //linkArray.push({ name: "facebook", path: "www.facebook.pl" });
-           
-           
-        }
+            appBar = document.getElementById("scenarioAppBar");
+            var style = document.getElementById("scenarioAppBar").winControl;
+            document.getElementById("scenarioAppBar").winControl.show();
+            document.getElementById("scenarioAppBar").winControl.sticky = false;
+            
+        },
+        deleteClickHandler: function (eventInfo) {
+            console.log("---Delete item---");
+            var listView = document.getElementById("basicListView").winControl;
+            var test = listView.selection.getItems().done(function(selectedItemsToDelete){
+                try {
+                    eventInfo.preventDefault();
+                    var link = eventInfo.target;
+                    link.href = "/pages/home/home.html";
+                
+                    DataManager.removeSelectedLinks(selectedItemsToDelete, listView.selection.getIndices());
+                }
+                catch (e) {
+                    console.log(e);
+                }
+                
+            });
+            
+        },
+        selectAllHandler: function (eventInfo) {
+            var listView = document.getElementById("basicListView").winControl;
+            listView.selection.selectAll();
+        },
+        deselectAllHandler: function (eventInfo) {
+            var listView = document.getElementById("basicListView").winControl;
+            listView.selection.clear();
+        },
     });
-    var deleteItem = function () {
+    var appBar;
 
-    }
+    
 })();

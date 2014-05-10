@@ -49,7 +49,10 @@
     <RequiredPlatformVersion>8.1</RequiredPlatformVersion>
     <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
-    <PackageCertificateKeyFile>linkSaver_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>linkSaver_StoreKey.pfx</PackageCertificateKeyFile>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxBundlePlatforms>neutral</AppxBundlePlatforms>
+    <PackageCertificateThumbprint>C43798D04328B1486CE402543FDC597FA8321490</PackageCertificateThumbprint>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="package.appxmanifest">
@@ -63,6 +66,9 @@
     <Content Include="js\dataManager.js" />
     <Content Include="js\default.js" />
     <Content Include="js\navigator.js" />
+    <Content Include="pages\settings\privacy.html" />
+    <None Include="Package.StoreAssociation.xml" />
+    <None Include="linkSaver_StoreKey.pfx" />
     <Content Include="pages\addLink\addLink.css" />
     <Content Include="pages\addLink\addLink.html" />
     <Content Include="pages\addLink\addLink.js" />

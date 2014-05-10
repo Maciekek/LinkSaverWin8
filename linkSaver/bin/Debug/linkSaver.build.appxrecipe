@@ -5,7 +5,7 @@
     <WindowsUser>Maciej</WindowsUser>
     <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
     <PackageArchitecture>neutral</PackageArchitecture>
-    <PackageIdentityName>a618e451-0bac-4712-b93e-35be178f2bd7</PackageIdentityName>
+    <PackageIdentityName>linkSavae</PackageIdentityName>
   </PropertyGroup>
   <ItemGroup>
     <AppXManifest Include="D:\LinkSaverWin8\linkSaver\bin\Debug\AppxManifest.xml">

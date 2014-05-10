@@ -43,6 +43,14 @@
         // suspended, call args.setPromise().
         app.sessionState.history = nav.history;
     };
+    app.onsettings = function (args) {
+        args.detail.applicationcommands = {
+            "privid": {
+                title: "Privacy Policy", href: "pages/settings/privacy.html"
+            }
+        };
+        WinJS.UI.SettingsFlyout.populateSettings(args);
+    };
 
     app.start();
 })();

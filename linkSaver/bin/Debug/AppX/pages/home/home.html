@@ -12,6 +12,7 @@
     <link href="/css/default.css" rel="stylesheet" />
     <link href="/pages/home/home.css" rel="stylesheet" />
     <script src="/pages/home/home.js"></script>
+   
 </head>
 <body>
     <!-- The content that will be loaded and displayed. -->
@@ -22,29 +23,37 @@
                 <span class="pagetitle">Welcome to linkSaver!</span>
             </h1>
         </header>
-        <section aria-label="Main content" role="main">
-            <p>Content goes here.</p>
-            <div id="mediumListIconTextTemplate" data-win-control="WinJS.Binding.Template">
+        <section aria-label="Main content" role="main" style="margin-top: 10px;">
+            <div id="mediumListIconTextTemplate" data-win-control="WinJS.Binding.Template" style="width: 1047px;">
                 <div style="width: 150px; height: 100px;">
 
-                    
-                    
-                    <div id="element">
+                    <div class="smallListIconTextItem">
 
-                        <!-- Displays the "title" field. -->
-                        <h4 data-win-bind="innerText: name"></h4>
-
-                        <!-- Displays the "text" field. -->
-                        <h6 data-win-bind="innerText: link"></h6>
+                        <div id="element">
+                            <button id="buttonLink" onclick="window.location.href = document.activeElement.getElementsByTagName('h6')[0].innerText"><h4 data-win-bind="innerText: name">asdsa</h4>
+                            <h6 class="link" data-win-bind="innerText: link">asdasd</h6></button>
+                            
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div id="basicListView" data-win-control="WinJS.UI.ListView">
+            <div id="basicListView" data-win-control="WinJS.UI.ListView" data-win-options="{
+                tapBehavior: 'toggleSelect',
+                itemsReorderable: true,
+                layout: { type: WinJS.UI.GridLayout } }" >
             </div>
-
-            <button id="addLinkButton">Add link</button>
+        	<span style="display: block; position: fixed; left: 1029px; top: 687.32px; right: 199px; bottom: 9.98px;">
+        		<button id="addLinkButton" style="display: inline; width: 130px; height: 66.05px;">Add link</button>
+        	</span>
         </section>
+    </div>
+    <div id="scenarioAppBar" data-win-control="WinJS.UI.AppBar" >
+        <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{id:'cmdAdd',label:'Add',icon:'add',section:'global',extraClass:'singleSelect',tooltip:'Add item'}"></button>
+        <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{id:'cmdSelectAll',label:'Select All',icon:'selectall',section:'selection',extraClass:'multiSelect',tooltip:'Select All'}"></button>
+        <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{id:'cmdClearSelection',label:'Clear Selection',icon:'clearselection',section:'selection',extraClass:'multiSelect',tooltip:'Clear Selection'}"></button>
+        <hr data-win-control="WinJS.UI.AppBarCommand" data-win-options="{type:'separator',section:'selection',extraClass:'multiSelect'}" />
+        <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{id:'cmdDelete',label:'Delete',icon:'delete',section:'selection',extraClass:'multiSelect',tooltip:'Delete item'}"></button>
     </div>
 </body>
 </html>

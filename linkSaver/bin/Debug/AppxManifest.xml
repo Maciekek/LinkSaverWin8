@@ -7,7 +7,7 @@
 
     For more information on package manifest files, see http://go.microsoft.com/fwlink/?LinkID=241727
   -->
-  <Identity Name="a618e451-0bac-4712-b93e-35be178f2bd7" Version="1.0.0.0" Publisher="CN=Maciej" ProcessorArchitecture="neutral" />
+  <Identity Name="linkSavae" Version="1.0.0.0" Publisher="CN=Maciej" ProcessorArchitecture="neutral" />
   <Properties>
     <DisplayName>linkSaver</DisplayName>
     <PublisherDisplayName>Maciej</PublisherDisplayName>
@@ -30,14 +30,15 @@
   <Capabilities>
     <Capability Name="internetClient" />
   </Capabilities>
-  <Dependencies>
-    <PackageDependency Name="Microsoft.WinJS.2.0" MinVersion="1.0.9600.16408" />
-  </Dependencies>
   <build:Metadata>
+    <build:Item Name="Blend" Version="12.0.41002.1" />
     <build:Item Name="VisualStudio" Version="12.0" />
     <build:Item Name="VisualStudioEdition" Value="Microsoft Visual Studio Ultimate 2013" />
     <build:Item Name="OperatingSystem" Version="6.3.9600.16384 (winblue_rtm.130821-1623)" />
     <build:Item Name="Microsoft.Build.AppxPackage.dll" Version="12.0.21005.1" />
     <build:Item Name="MakePri.exe" Version="6.3.9600.16384 (winblue_rtm.130821-1623)" />
   </build:Metadata>
+  <Dependencies>
+    <PackageDependency Name="Microsoft.WinJS.2.0" MinVersion="1.0.9600.16408" />
+  </Dependencies>
 </Package>

@@ -8,7 +8,7 @@
     <link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
     <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
     <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
-
+    <script src="/js/dataManager.js"></script>
     <link href="addLink.css" rel="stylesheet" />
     <script src="addLink.js"></script>
 </head>
@@ -20,13 +20,24 @@
                 <span class="pagetitle">Addlink</span>
             </h1>
         </header>
-        <section aria-label="Add link" role="main">
-            <input id="nameInput" type="text" />
-            <input id="linkInput" type="text" />
-            <button id="saveLinkButton">Save link</button>
-            <button id="reset">Reset</button>
+        <section class="form"  aria-label="Add link" role="main">
+        	<div>
+        		<span style="width: 418px;">Input here your link path:</span>
+        	</div>
+            <div style="height: 250px;">
+                <textarea id="nameInput" ></textarea>
+            </div>
+        	<div>
+        		<span style="width: 418px; height: 59px;">Input here description of your link:</span>
+        	</div>
+        	<div style="width: 1252px; height: 79px;">
+                <input id="linkInput" type="text"  />
+        	</div>
 
         </section>
     </div>
+	<span style="position: fixed; left: 1098px; top: 561px; bottom: 110px; right: 121px;">
+		<button id="saveLinkButton" style="position: static; left: 1100px; right: 122px; top: 573px; bottom: 119px; width: 147px; height: 93.56px;">Save link</button>
+	</span>
 </body>
 </html>

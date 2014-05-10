@@ -1,50 +1,112 @@
 ﻿(function () {
     "use strict";
-
-   
-    var dataArray = [];
+    var textInFile;
     var dataList;
+    var applicationData = Windows.Storage.ApplicationData.current;
+    var roamingFolder = applicationData.roamingFolder;
 
-    
-    
-    var getLinks = function (){
-        dataList = new WinJS.Binding.List([dataArray]);
-        var applicationData = Windows.Storage.ApplicationData.current;
-        var roamingSettings = applicationData.roamingSettings;
+    var write = function (roamingFolder, nameRetrieved, linkRetrieved) {
        
-        var numberOfLinks = getNumberOfLinks(roamingSettings);
-        for (var i = 1; i <= numberOfLinks; i++) {
-            dataList.pop();
-        };
-        for (var i = 1; i <= numberOfLinks; i++) {
-            var name = roamingSettings.values[i]["name"];
-            var link = roamingSettings.values[i]["link"];
-            console.log("Odebrane na home name " + name + " link " + link);
-           
-            dataList.push({ name: name, link: link });
-        };
-        
+      
+
+        roamingFolder.createFileAsync("dataFile.txt", Windows.Storage.CreationCollisionOption.replaceExisting)
+                .then(function (file) {
+                    //var dataToSave= [{ name: "test", link: "tetst" }];
+                    var dataToSave = "$ test % test &";
+                    var dataToSaveTest = "name: 'test', link: 'tetst'";
+
+                    textInFile = textInFile.replace(/"/g, "");
+
+                    var fileContent = textInFile;
+                    var stringToSave = textInFile + '### ' + nameRetrieved + ' %%% ' + linkRetrieved + ' &&&';
+                   
+                 
+                    return Windows.Storage.FileIO.writeTextAsync(file, JSON.stringify(stringToSave));
+                }).done(function () {
+                    console.log("zapis udany");
+                });
+
+       
+    };
+
+    var read = function (roamingFolder) {
+        console.log("JESTEM READ");
+        roamingFolder.getFileAsync("dataFile.txt")
+        .then(function (sampleFile) {
+            return Windows.Storage.FileIO.readTextAsync(sampleFile);
+        }).done(function (content) {
+          
+            textInFile = content;
+            content =  content.replace(/"/g, "");
+            content = "[{".concat(content.replace(/&&&###/g, "'}, {name :'"));
+            content = content.replace(/###/g, "name: '");
+            content = content.replace(/%%%/g, "', link: '");
+            content = content.replace(/&&&/g, "'}]");
+            content = content.replace("\"", "");
+          
+            try {
+                var linkList = JSON.parse(JSON.stringify(eval('' + content + '')));
+                console.log(content);
+                dataList = new WinJS.Binding.List(linkList);
+                var simpleListView = document.getElementById('basicListView').winControl;
+                var simpleTemplate = document.getElementById('mediumListIconTextTemplate');
+
+                simpleListView.itemTemplate = simpleTemplate;
+                simpleListView.itemDataSource = dataList.dataSource;
+            }
+            catch (e) {
+                console.log("Nic do czytania");
+            }
+        }, function () {
+            console.log("cos");
+        });
         return dataList;
     };
+    
+  
+    var removeSelectedLinks = function (itemsToDelete, number) {
+        console.log("---remove method---");
+        var countOfSelectedItems = itemsToDelete.length;
+        for (var i = 0; i < itemsToDelete.length; i++) {
+            var nameLink = JSON.stringify(itemsToDelete[i].data.name)
+            var pathLink = JSON.stringify(itemsToDelete[i].data.link);
+
+            nameLink = nameLink.replace(/"/g, "");
+            pathLink = pathLink.slice(pathLink.length - 4, pathLink.length - 2);
+
+            var prepareReg = "###" + nameLink + "*.*" + pathLink + " &&&";
+
+            var removeName = new RegExp(prepareReg, "g");
+            console.log(removeName.toString());
+            textInFile = textInFile.replace(removeName, "")
+
+        }
+        roamingFolder.createFileAsync("dataFile.txt", Windows.Storage.CreationCollisionOption.replaceExisting)
+                .then(function (file) {
+
+                    return Windows.Storage.FileIO.writeTextAsync(file, textInFile);
+                }).done(function () {
+                    console.log("zapis udany");
+                    read(roamingFolder);
+                });
+ 
+        //### stackoverflow %%% http://stackoverflow.com/questions/2906582/how-to-create-an-html-button-that-acts-like-a-link &&&### facebook %%% https://www.facebook.com/ &&&
+
+    };
+
+  
+
+
 
     var publicMembers =
         {
-            getLinks: getLinks,
-            itemList: dataList
+            write: write,
+            read: read,
+            removeSelectedLinks: removeSelectedLinks,
+           
         };
     WinJS.Namespace.define("DataManager", publicMembers);
 
-    var getNumberOfLinks = function (roamingSettings) {
-        var numberOfLinks;
-        try {
-            numberOfLinks = roamingSettings.values["numberOfLinks"];
-            console.log("ilość linków z add " + numberOfLinks);
-        }
-        catch (e) {
-
-            console.log("brak wcześniejszych wpisów.");
-        };
-        return numberOfLinks;
-    };
+    
 
 })();

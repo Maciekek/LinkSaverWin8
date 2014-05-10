@@ -13,3 +13,4 @@ pages\addLink\addLink.js
 pages\home\home.css
 pages\home\home.html
 pages\home\home.js
+pages\settings\privacy.html

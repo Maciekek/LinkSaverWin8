@@ -5,11 +5,11 @@
     <WindowsUser>Maciej</WindowsUser>
     <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
     <PackageArchitecture>neutral</PackageArchitecture>
-    <PackageIdentityName>a618e451-0bac-4712-b93e-35be178f2bd7</PackageIdentityName>
-    <RegisteredManifestChecksum>2B5BC8C40CF0F50ED6B0E0B04AA0C565DFBEF51C4D36E79ADD4EEAB02C263E4A</RegisteredManifestChecksum>
-    <RegisteredPackageMoniker>a618e451-0bac-4712-b93e-35be178f2bd7_1.0.0.0_neutral__p80arcj9kjwz8</RegisteredPackageMoniker>
-    <RegisteredUserModeAppID>a618e451-0bac-4712-b93e-35be178f2bd7_p80arcj9kjwz8!App</RegisteredUserModeAppID>
-    <RegisteredPackageID>a618e451-0bac-4712-b93e-35be178f2bd7</RegisteredPackageID>
+    <PackageIdentityName>linkSavae</PackageIdentityName>
+    <RegisteredManifestChecksum>66BB47C2658ECEC7BB686B7F16EA38F5E530EDAE00A5808A3F5D901099366A6B</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>linkSavae_1.0.0.0_neutral__p80arcj9kjwz8</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>linkSavae_p80arcj9kjwz8!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>linkSavae</RegisteredPackageID>
     <RegisteredPackagePublisher>CN=Maciej</RegisteredPackagePublisher>
     <RegisteredVersion>1.0.0.0</RegisteredVersion>
   </PropertyGroup>
@@ -17,21 +17,21 @@
     <AppXManifest Include="D:\LinkSaverWin8\linkSaver\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2014-03-23T10:11:27.916</Modified>
+      <Modified>2014-03-30T16:16:08.634</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\LinkSaverWin8\linkSaver\css\default.css">
       <PackagePath>css\default.css</PackagePath>
-      <Modified>2014-03-23T09:49:38.057</Modified>
+      <Modified>2014-03-30T14:54:03.719</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\LinkSaverWin8\linkSaver\pages\addLink\addLink.css">
       <PackagePath>pages\addLink\addLink.css</PackagePath>
-      <Modified>2014-03-23T09:51:00.654</Modified>
+      <Modified>2014-03-30T15:29:08.441</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\LinkSaverWin8\linkSaver\pages\home\home.css">
       <PackagePath>pages\home\home.css</PackagePath>
-      <Modified>2014-03-23T09:55:26.906</Modified>
+      <Modified>2014-03-30T16:26:25.416</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\LinkSaverWin8\linkSaver\images\logo.scale-100.png">
       <PackagePath>images\logo.scale-100.png</PackagePath>
@@ -55,7 +55,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\LinkSaverWin8\linkSaver\js\dataManager.js">
       <PackagePath>js\dataManager.js</PackagePath>
-      <Modified>2014-03-23T10:43:51.598</Modified>
+      <Modified>2014-03-30T16:31:26.788</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\LinkSaverWin8\linkSaver\js\default.js">
       <PackagePath>js\default.js</PackagePath>
@@ -67,27 +67,27 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\LinkSaverWin8\linkSaver\pages\addLink\addLink.js">
       <PackagePath>pages\addLink\addLink.js</PackagePath>
-      <Modified>2014-03-23T10:08:36.013</Modified>
+      <Modified>2014-03-30T16:35:26.970</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\LinkSaverWin8\linkSaver\pages\home\home.js">
       <PackagePath>pages\home\home.js</PackagePath>
-      <Modified>2014-03-23T10:44:52.861</Modified>
+      <Modified>2014-03-30T16:10:15.931</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\LinkSaverWin8\linkSaver\pages\addLink\addLink.html">
       <PackagePath>pages\addLink\addLink.html</PackagePath>
-      <Modified>2014-03-23T09:56:25.570</Modified>
+      <Modified>2014-03-30T15:34:38.566</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\LinkSaverWin8\linkSaver\pages\home\home.html">
       <PackagePath>pages\home\home.html</PackagePath>
-      <Modified>2014-03-23T10:42:41.189</Modified>
+      <Modified>2014-03-30T16:22:01.387</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\LinkSaverWin8\linkSaver\default.html">
       <PackagePath>default.html</PackagePath>
-      <Modified>2014-03-23T09:49:38.053</Modified>
+      <Modified>2014-03-30T15:03:34.276</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\LinkSaverWin8\linkSaver\bin\Debug\ReverseMap\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2014-03-23T10:11:27.803</Modified>
+      <Modified>2014-03-30T16:16:08.446</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

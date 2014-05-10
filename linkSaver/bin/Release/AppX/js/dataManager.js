@@ -6,18 +6,27 @@
     var roamingFolder = applicationData.roamingFolder;
     var sizeDB = 0;
     var db = [];
-    
+    db.links = [];
     
     var write = function (roamingFolder, nameRetrieved, linkRetrieved) {
+        console.log("JESTEM WRITE");
+       
+       
+       console.log(sizeDB);
+       console.log(db[0]);
+
         roamingFolder.createFileAsync("dataFile.txt", Windows.Storage.CreationCollisionOption.replaceExisting)
                 .then(function (file) {
                    
+                  
+                    console.log(sizeDB);
+                    console.log(db[0]);
                     var newLink_ = {
                         id: ++sizeDB,
                         link: linkRetrieved,
                         name: nameRetrieved
                     };
-                    db.links.push(newLink_);
+                    db.push(newLink_);
                     
                  
                  
@@ -43,10 +52,11 @@
             };
           
             var json_file = JSON.parse(content);
-            sizeDB = json_file.countOfElement;
-            db.links = json_file.links;
-            console.log(db.links);
-            dataList = new WinJS.Binding.List(db.links);
+            sizeDB = json_file.length;
+            console.log(sizeDB);
+            db = json_file;
+            console.log(db);
+            dataList = new WinJS.Binding.List(db);
                 
 
             simpleListView.itemTemplate = simpleTemplate;
